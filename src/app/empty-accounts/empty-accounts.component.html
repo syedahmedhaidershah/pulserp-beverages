@@ -1,0 +1,24 @@
+<div *ngIf="customersEmpty.length === 0" class="px-3">
+  Salesmen / Clients do not have any 'MT' right now.
+</div>
+<div class="col-md-12 vertical-scroll h-18r">
+  <div *ngFor="let ce of customersEmpty" class="col-md-12 p-1">
+    <div class="text-white d-block col-md-12 py-3 px-1">
+      <div class="col-md-12 font-weight-bold">
+        {{ce.name}}
+        <span class="float-right">
+          ({{getTotalEmpty(ce.data)}})
+        </span>
+      </div>
+      <div class="row m-0 col-md-12 hoverableItem" *ngFor="let oneC of ce.data" (click)="payAndReturn(oneC)">
+        <div class="col-md-6 vertical-align-middle text-white">
+          {{oneC.iName}}
+        </div>
+        <div class="col-md-6 vertical-align-middle text-white text-right">
+          {{oneC.quantity - oneC.returned}}
+        </div>
+      </div>
+    </div>
+    <mat-divider class="light-divider"></mat-divider>
+  </div>
+</div>

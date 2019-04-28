@@ -1,0 +1,18 @@
+<div class="col-md-12 p-2">
+  <form [formGroup]="quantityForm">
+    <mat-form-field class="col-md-7 p-1 d-block mx-auto">
+      <input #quantityInput matInput placeholder="MT Quantity to Clear" min=0 max={{data}} type="number" class="col-md-12"
+        formControlName="quantity" autocomplete="off" />
+    </mat-form-field>
+  </form>
+</div>
+<div class="col-md-12 py-1">
+  <button mat-raised-button color="accent" class="d-block mx-auto" (click)="retRef()">
+    <mat-icon class="vertical-align-middle mr-1">
+      done
+    </mat-icon>
+    <span>
+      Done
+    </span>
+  </button>
+</div>

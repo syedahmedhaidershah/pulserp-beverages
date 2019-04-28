@@ -1,0 +1,30 @@
+<div class="col-md-12 p-1">
+  <form [formGroup]="createSalesmanForm">
+    <div *ngFor="let k of formKeys" class="col-md-12 p-1">
+      <mat-form-field class="col-md-12 p-0">
+        <input matInput [placeholder]="controlLabels[k]" [formControlName]="k" autocomplete="off" />
+      </mat-form-field>
+    </div>
+    <div class="col-md-12 bg-success text-white py-1" *ngIf="hdiscountsList.length > 0">
+      <small>H.Discounts have been applied.</small>
+      <mat-icon matRipple class="vertical-align-middle float-right cursor-pointer" (click)="revokeHdiscounts()">
+        delete
+      </mat-icon>
+    </div>
+    <div matRipple class="col-md-12 p-2 border cursor-pointer shadow rounded" (click)="promptHDiscounts()">
+      <div class="col-md-12 p-1">
+        <span>
+          Add H.Discounts
+        </span>
+        <mat-icon class="float-right vertical-align-middle">
+          keyboard_arrow_right
+        </mat-icon>
+      </div>
+    </div>
+  </form>
+  <div class="col-md-12 p-2 mt-2">
+    <button mat-raised-button color="accent" class="px-5 py-2 d-block mx-auto" (click)="addSalesman()">
+      Save
+    </button>
+  </div>
+</div>

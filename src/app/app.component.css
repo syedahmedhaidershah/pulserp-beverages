@@ -1,0 +1,32 @@
+.header-logo{
+    height: 1rem!important;
+}
+.body-container {
+    height: calc(100% - 64px)!important;
+    background: url('../assets/img/homeBackMin.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.body-container.active {
+    height: calc(100% - 64px)!important;
+    background: url('../assets/img/homeBack.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #ccc; 
+}
+::-webkit-scrollbar-thumb {
+    background: #447507;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #5ca209; 
+}
+.cdk-overlay-dark-backdrop {
+    background: rgba(0,0,0,0.6);
+}

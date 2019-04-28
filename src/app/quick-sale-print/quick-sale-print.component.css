@@ -1,0 +1,18 @@
+td {
+    font-size: 0.7rem;
+}
+tr, th, td {
+    border: 1px solid #222;
+    border-collapse: collapse;
+}
+.bottom-row {
+    bottom: 0px;
+}
+@media print {
+    #print-button-container {
+        display: none!important;
+    }
+}
+.w-100p {
+    width: 100px!important;
+}

@@ -1,0 +1,39 @@
+<div class="position-relative col-md-12 py-2">
+  <h1 class="text-center text-secondary">
+    {{data.name}}
+  </h1>
+  <div class="col-md-12 py-2">
+    <form [formGroup]="quantityForm" class="col-md-12 p-0 m-0 d-block">
+      <mat-form-field class="col-md-12 fs-3r m-0 pt-0">
+        <input matInput class="col-md-12 d-block mx-auto mt-0 border-0 fs-3r text-center p-1 text-success" type="number"
+          min=0 max="{{data.quantity}}" value="0" formControlName="quantity" autocomplete="off" />
+      </mat-form-field>
+    </form>
+    <div class="float-right position-absolute t-1r r-1r overflow-visible mt-5">
+      <div matRipple class="cursor-pointer p-1 m-0 br-25p card rounded shadow">
+        <div class="d-block up-button m-0" (click)="changeVal(1)"></div>
+      </div>
+      <div matRipple class="cursor-pointer p-1 m-0 br-25p card rounded shadow">
+        <div class="d-block down-button m-0" (click)="changeVal(-1)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="d-block mx-auto col-md-6 justify-content-center">
+    <div class="col-md-12 row m-0 p-0">
+      <div class="col-md-6">
+        <button mat-mini-fab color="primary" class="d-block mx-auto" (click)="closeRef(1)">
+          <mat-icon>
+            done
+          </mat-icon>
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button mat-mini-fab color="accent" class="d-block mx-auto" (click)="closeRef(0)">
+          <mat-icon>
+            clear
+          </mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

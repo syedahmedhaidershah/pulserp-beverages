@@ -1,0 +1,7 @@
+<div class="col-md-12 p-1">
+  <div *ngFor="let c of customersList" class="col-md-12 p-1">
+    <div matRipple class="col-md-12 py-3 px-4 shadow border rounded hoverableItem cursor-pointer" (click)="showInfo(c)">
+      {{c.name}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="col-md-12 row m-0 p-0">
+  <div *ngFor="let l of routerLinks" class="pr-1 pl-0 col-md-2">
+    <div id="link-{{l.link}}" class="col-md-12 p-0 text-white router-link cursor-pointer" (click)="navigateTo(l.link)">
+      <div class="col-md-12 px-3 py-2 text-center">
+          {{l.label}}
+      </div>
+    </div>
+  </div>
+</div>

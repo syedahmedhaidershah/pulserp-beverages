@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face{
+    src: url('./assets/fonts/proximaNovaLight.ttf');
+    font-family: proximaNova;
+}
+
+.font-proxima-nova {
+    font-family: proximaNova!important;
+}
+
+*, h1, h2, h3, h4, h5, input, button{
+    font-family: proximaNova;
+}
+*, *:active, *:focus{
+    -webkit-touch-callout: none!important;
+    user-select: none!important;
+    outline: none!important;
+}
+html, body { height: 100%; }
+body {
+    margin: 0; font-family: proximaNova, Roboto, "Helvetica Neue", sans-serif;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.no-decor,
+.no-decor:active,
+.no-decor:visited,
+.no-decor:focus {
+    text-decoration: none!important;
+}
+div span{
+    color: inherit!important;
+    background-color: transparent!important;
+}
+.router-link {
+    transition: background-color 300ms, color 300ms;
+}
+.router-link:hover:not(.active) {
+    color: #ffffff!important;
+    background-color: #c0ced5!important;
+}
+div.active {
+    color: #607d8b!important;
+    background-color: #ffffff!important;
+}
+.vertical-align-middle {
+    vertical-align: middle!important;
+}
+.md-p-0 mat-dialog-container {
+    padding: 0px!important;
+}
+.vertical-scroll {
+    overflow-y: auto!important;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #ccc; 
+}
+::-webkit-scrollbar-thumb {
+    background: #447507;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #5ca209; 
+}
+.hoverableItem:hover,
+.hoverableItem:hover mat-expansion-panel-header mat-panel-title,
+.hoverableItem:hover mat-expansion-panel-header mat-panel-description,
+.hoverableItem:hover mat-expansion-panel-header span {
+    background-color: #607d8b;
+    color: #ffffff!important;
+}
+.h-24_5r {
+    height: 24.5rem;
+}
+.r-1r {
+    right: 1rem;
+}
+.h-40r {
+    height: 40rem!important;
+}
+.h-100_64px {
+    height: calc(100% - 64px)!important;
+}
+.r-0_2r {
+    right: 0.2rem;
+}
+.t-0_2r {
+    top: 0.2rem;
+}
+.fs-2-75r {
+    font-size: 2.75rem!important;
+}
+.bg-transp-blue {
+    background-color: rgba(8,48,70,0.85)
+}

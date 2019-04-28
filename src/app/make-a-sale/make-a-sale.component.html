@@ -1,0 +1,184 @@
+<mat-toolbar color="primary">
+  <span>Make A Sale</span>
+  <button mat-mini-fab class="position-absolute float-right r-1r" (click)="closeRef()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="col-md-12 p-1">
+  <div class="container row col-md-12 m-0">
+    <div class="col-md-9 p-0">
+      <form [formGroup]="salesForm" class="col-md-9 my-0 p-1">
+        <div class="col-md-12 row m-0 p-0">
+          <mat-form-field class="col-md-4">
+            <mat-select #salesmanSelect placeholder="Select a Salesman/Customer" (selectionChange)="setSalesman(salesmanSelect)">
+              <mat-option *ngFor="let s of salesmanList" [value]="s.customer_id">
+                {{s.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <mat-form-field class="col-md-4" *ngIf="selectedSalesman !== undefined && selectedSalesman !== null">
+            <mat-select #itemSelect placeholder="Select an item" (selectionChange)="setItem(itemSelect)">
+              <mat-option *ngFor="let i of itemsList" [value]="i.item_id">
+                {{i.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <!-- <mat-form-field class="col-md-4" *ngIf="selectedSalesman !== undefined && selectedSalesman !== null && selectedItem !== undefined && selectedItem !== null">
+            <input matInput placeholder="Select a quantity" min=0 max="{{selectedItem.quantity}}" type="number"
+              autocomplete="off" formControlName="quantity" />
+          </mat-form-field> -->
+        </div>
+      </form>
+      <div class="col-md-12 p-0 mt-1">
+        <div class="col-md-12 p-0 row m-0 border rounded shadow h-40r">
+          <div class="col-md-6 p-0 border-right h-100">
+            <mat-toolbar color="primary">
+              <span>Available Items</span>
+            </mat-toolbar>
+            <div class="p-2 d-block" *ngIf="itemsList.length === 0">
+              No items present in inventory
+            </div>
+            <div *ngIf="itemsList.length > 0 " class="p-1 vertical-scroll h-100_64px">
+              <mat-grid-list cols="4" rowHeight="1:1" class="col-md-12">
+                <mat-grid-tile matRipple *ngFor="let i of showItems" class="bg-success text-white cursor-pointer"
+                  (click)="inquireQuantity(i)">
+                  <div class="col-md-12">
+                    <div class="col-md-12 text-center">
+                      {{i.name}}
+                    </div>
+                    <div class="col-md-12 text-center">
+                      <small class="col-md-12 text-center">
+                        Stock: ({{i.quantity}})
+                      </small>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+              <!-- <div class="col-md-12 p-1" *ngFor="let i of itemsList">
+                <div class="rounded shadow py-3 px-3 col-md-12 border">
+                  {{i.name}}
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="col-md-6 p-0 border-right h-100">
+            <mat-toolbar color="primary">
+              <span>Cart Items</span>
+            </mat-toolbar>
+            <div class="p-2 d-block" *ngIf="cartList.length === 0">
+              No Items have been added to Cart
+            </div>
+            <div *ngIf="cartList.length > 0 " class="p-1 vertical-scroll h-100_64px">
+              <mat-grid-list cols="4" rowHeight="1:1" class="col-md-12">
+                <mat-grid-tile matRipple *ngFor="let i of cartList" class="bg-info text-white cursor-pointer">
+                  <button mat-mini-fab class="bg-white text-secondary position-absolute r-0_2r t-0_2r" (click)="remFromList(i)">
+                    <mat-icon class="mat-18">clear</mat-icon>
+                  </button>
+                  <div class="col-md-12">
+                    <div class="col-md-12 text-center">
+                      {{i.data.name}}
+                    </div>
+                    <div class="col-md-12 text-center">
+                      <small class="col-md-12 text-center">
+                        ({{i.onList}})
+                      </small>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+              <!-- <div class="col-md-12 p-1" *ngFor="let i of itemsList">
+                            <div class="rounded shadow py-3 px-3 col-md-12 border">
+                              {{i.name}}
+                            </div>
+                          </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 p-1 m-0 h-100" *ngIf="selectedSalesman !== undefined && selectedSalesman !== null">
+      <div class="col-md-12 p-0 row m-0 position-relative">
+        <div class="col-md-6 px-0 text-center py-5 card rounded shadow overflow-hidden">
+          <div *ngIf="emptyRemaining >= 0" class="col-md-12 px-0 text-success display-1">
+            {{emptyRemaining}}
+          </div>
+          <div *ngIf="emptyRemaining < 0" class="col-md-12 px-0 text-success display-1">
+            0
+          </div>
+          <div class="col-md-12 text-success m-0 px-0">
+            <span>
+              Previous MT
+            </span>
+          </div>
+          <div class="col-md-12 py-1">
+            <span *ngIf="emptyRemaining < 0">
+              Loading MT ...
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6 px-0 text-center py-5 card rounded shadow overflow-hidden">
+          <div *ngIf="previousBalance >= 0" class="col-md-12 px-0 text-info display-1">
+            {{previousBalance}}
+          </div>
+          <div *ngIf="previousBalance < 0" class="col-md-12 px-0 text-info display-1">
+            0
+          </div>
+          <div class="col-md-12 text-info m-0 px-0">
+            <span>
+              Previous Balance
+            </span>
+          </div>
+          <div class="col-md-12 py-1">
+            <span *ngIf="previousBalance < 0">
+              Loading Prev. Balance ...
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 py-2 px-1">
+        <form [formGroup]="extraDetailsForm" class="col-md-12 py-2">
+          <mat-form-field class="col-md-12 p-1">
+            <input matInput placeholder="Received MT" type="number" min=0 max={{emptyRemaining}} formControlName="mtReturned" />
+          </mat-form-field>
+          <div class="col-md-12 py-2 px-3 text-info">
+            <mat-divider></mat-divider>
+            <div class="col-md-12 row m-0">
+              <div class="col-md-6 text-right py-2">
+                Items Total:
+              </div>
+              <div class="col-md-6">
+                <span class="fs-2-75r">{{productsTotal}}</span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="col-md-12 row m-0">
+              <div class="col-md-6 text-right py-2">
+                Total:
+              </div>
+              <div class="col-md-6">
+                <span class="fs-2-75r">{{totalBill}}</span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+          <mat-form-field class="col-md-12 p-1">
+            <input matInput placeholder="M.Discount" type="number" min=0 max={{totalBill}} formControlName="mDiscount" />
+          </mat-form-field>
+          <mat-form-field class="col-md-12 p-1">
+            <input matInput placeholder="Received Cash" type="number" min=0 max={{previousBalance}} formControlName="cashReturned" />
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="col-md-12 py-2 px-3">
+        <button mat-raised-button color="primary" class="col-md-12 py-4" (click)="makeASale()">
+          <mat-icon class="vertical-align-middle mr-1">
+            done
+          </mat-icon>
+          <span class="vertical-align-middle">
+            Sell
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
