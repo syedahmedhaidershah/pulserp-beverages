@@ -39,12 +39,14 @@ module.exports = {
         },
         salesman: {
             insert: 'Error saving salesman, please contact your administrator',
-            balancepending: 'Error retreiving pending balance'
+            balancepending: 'Error retreiving pending balance',
+            update: 'Error updating information for salesman'
         },
         sales: {
             insert: 'An error occured making the current sale',
             deposit: 'An error occured updating balance for the salesman/customer',
-            returnmt: 'An error occured receiving MT'
+            returnmt: 'An error occured receiving MT',
+            returncrate: 'Error receiveing a crate back'
         },
         company: {
             returnmt: "An error occured returning MT to company"
@@ -52,6 +54,9 @@ module.exports = {
         rentals: {
             insert: 'You have successfully rent out an item',
             update: 'You have cleared a rental-sale'
+        },
+        accounts: {
+            def: 'Error making a transaction'
         }
     },
     successMessages: {
@@ -60,16 +65,21 @@ module.exports = {
             update: 'You have successfully updated your inventory'
         },
         salesman: {
-            insert: 'You have successfully added a salesman'
+            insert: 'You have successfully added a salesman',
+            update: 'You have successfully updated information for a salesman'
         },
         sales: {
             insert: 'You have successfully made a sale',
             deposit: 'You have successfully updated balance for the salesman/customer',
             cleared: 'You have successfully cleared a sales record',
-            returnmt: 'You have successfully received MT'
+            returnmt: 'You have successfully received MT',
+            returncrate: 'You have successfully received a crate back'
         },
         company: {
             returnmt: "You have successfully returned MT to company"
+        },
+        accounts: {
+            def: 'You have successfully made a transaction'
         }
     }
 }

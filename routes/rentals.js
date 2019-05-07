@@ -4,6 +4,18 @@ const succ = defs.successMessages.rentals;
 const queries = require('../imports/queries').rentals;
 
 module.exports = function (router, mysql) {
+
+    router.post('/get/inventory/items/rental', (req, res) => {
+        mysql.query(queries.getRentalsItems, (error, results, fields) => {
+            if (error) {
+                console.log(error);
+                res.send(defs.setRetRes('err', getItemErr));
+            } else {
+                res.send(defs.setRetRes('def', results));
+            }
+        });
+    });
+
     router.post('/rent/out', (req, res) => {
         const query = generalf.mysqlQuery(mysql, req.body, queries.add);
 
