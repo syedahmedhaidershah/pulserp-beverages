@@ -1,0 +1,1 @@
+SELECT sales.*, items.item_id, items.empty, items.name AS iName, customers.customer_id, customers.name FROM sales JOIN (SELECT * FROM items WHERE empty > -1) as items ON sales.item_id=items.item_id JOIN customers ON sales.customer_id = customers.customer_id WHERE `cleared`=0 ORDER BY invoice_id DESC

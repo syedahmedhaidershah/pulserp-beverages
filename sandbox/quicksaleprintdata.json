@@ -1,0 +1,283 @@
+{
+    "data": [
+        {
+            "data": {
+                "item_id": 50,
+                "name": "PET 300-345ML",
+                "selling": 336,
+                "cscheme": 0,
+                "quantity": 0,
+                "empty": 1,
+                "empty_account": 9,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 52,
+                "name": "PET 1.LITRE",
+                "selling": 378,
+                "cscheme": 30,
+                "quantity": 0,
+                "empty": 1,
+                "empty_account": 10,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 53,
+                "name": "PEPSI 1.5LITRE",
+                "selling": 522,
+                "cscheme": 35,
+                "quantity": 0,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 54,
+                "name": "MIRINDA 1.5LITRE",
+                "selling": 522,
+                "cscheme": 60,
+                "quantity": 0,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 55,
+                "name": "7UP 1.5LITRE",
+                "selling": 522,
+                "cscheme": 35,
+                "quantity": 0,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 56,
+                "name": "M/DEW 1.5LITRE",
+                "selling": 522,
+                "cscheme": 40,
+                "quantity": 0,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 57,
+                "name": "PET 2.25LITRE",
+                "selling": 445,
+                "cscheme": 25,
+                "quantity": 0,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 58,
+                "name": "CAN-250ML",
+                "selling": 336,
+                "cscheme": 0,
+                "quantity": 2,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 2
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 59,
+                "name": "CAN-300ML",
+                "selling": 378,
+                "cscheme": 0,
+                "quantity": 0,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 60,
+                "name": "STING 300ML",
+                "selling": 384,
+                "cscheme": 0,
+                "quantity": 0,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 61,
+                "name": "STING 500ML",
+                "selling": 621,
+                "cscheme": 35,
+                "quantity": 0,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 0
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 62,
+                "name": "STING CAN-250",
+                "selling": 420,
+                "cscheme": 0,
+                "quantity": 5,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 5
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 63,
+                "name": "SLICE 355ML",
+                "selling": 384,
+                "cscheme": 0,
+                "quantity": 2,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 2
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 64,
+                "name": "SLICE 1.LITRE",
+                "selling": 480,
+                "cscheme": 0,
+                "quantity": 2,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 2
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 65,
+                "name": "SLICE TETRA 200",
+                "selling": 396,
+                "cscheme": 0,
+                "quantity": 4,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 4
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 66,
+                "name": "AQ 500ML",
+                "selling": 274,
+                "cscheme": 0,
+                "quantity": 5,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 5
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 67,
+                "name": "AQ 1.5LITRE",
+                "selling": 252,
+                "cscheme": 0,
+                "quantity": 5,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 5
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 68,
+                "name": "AQ 6.LITRE",
+                "selling": 120,
+                "cscheme": 0,
+                "quantity": 5,
+                "empty": 0,
+                "empty_account": 5,
+                "empty_store": 5
+            },
+            "onList": 0
+        },
+        {
+            "data": {
+                "item_id": 51,
+                "name": "PET 500ML",
+                "selling": 454,
+                "cscheme": 25,
+                "quantity": 41,
+                "empty": 1,
+                "empty_account": 77,
+                "empty_store": 43
+            },
+            "onList": 2
+        }
+    ],
+    "prev": 0,
+    "paid": 838,
+    "mt": 78,
+    "mtr": 0,
+    "salesman": {
+        "customer_id": 1,
+        "name": "Haider",
+        "nic": 0,
+        "contact_no": 0,
+        "h50": 2,
+        "h51": 10,
+        "h52": 0,
+        "h53": 0,
+        "h54": 0,
+        "h55": 0,
+        "h56": 0,
+        "h57": 0,
+        "h58": 0,
+        "h59": 0,
+        "h60": 0,
+        "h61": 0,
+        "h62": 0,
+        "h63": 0,
+        "h64": 0,
+        "h65": 0,
+        "h66": 0,
+        "h67": 0,
+        "h68": 15
+    },
+    "bill": 838,
+    "productsBill": 838,
+    "mDiscount": 0
+}

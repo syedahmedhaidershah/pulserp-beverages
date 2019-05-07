@@ -1,0 +1,1 @@
+SELECT sales.customer_id,sales.invoice_id,customers.name,SUM(sales.balance) AS remaining FROM `sales` JOIN customers ON sales.customer_id = customers.customer_id GROUP BY date_time HAVING SUM(balance)>0 AND customer_id=2

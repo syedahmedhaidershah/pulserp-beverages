@@ -1,0 +1,13 @@
+1. Salesman/Customer ka date Wise profile(khata).
+2. Salesman /Customer k items ka return.
+3.customer ka jo scheme ya discount ek bar lagae who dusri bar na lagana pare
+4. Bill print ki table me sirf who discount ya scheme nazer aae jo hum customer ko de rahe hai. 
+5. T. Discount ko change kar k "M.Discount" kar de.
+6. Bill print ki table our total bilkul usi tra nazer aana chahiye jis tra meri excel ki table me nazer aata hai.
+Aap ager meri excel bill ghor se dekho ge to us me sub hai. Company rate, Scheme,discount, net per item rate, phir in sub ka table k neeche alag alag total. Phir gross total phir previous balance phir received cash phir net total. 
+Usi tra bill me MT b nazer aarahi MT total MT receive phir net MT
+4.daily date wise report with print. 
+5.Stock date wise report sale and purchase. 
+6.daily experience 
+7.company account 
+8.bank account
