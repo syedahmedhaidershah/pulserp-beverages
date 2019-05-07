@@ -138,7 +138,8 @@
       <div class="col-md-12 py-2 px-1">
         <form [formGroup]="extraDetailsForm" class="col-md-12 py-2">
           <mat-form-field class="col-md-12 p-1">
-            <input matInput placeholder="Received MT" type="number" min=0 max={{emptyRemaining}} formControlName="mtReturned" />
+            <input matInput placeholder="Received MT" type="number" min=0 max={{emptyRemaining}} formControlName="mtReturned"
+              autocomplete="off" />
           </mat-form-field>
           <div class="col-md-12 py-2 px-3 text-info">
             <mat-divider></mat-divider>
@@ -169,15 +170,27 @@
           </mat-form-field>
         </form>
       </div>
-      <div class="col-md-12 py-2 px-3">
-        <button mat-raised-button color="primary" class="col-md-12 py-4" (click)="makeASale()">
-          <mat-icon class="vertical-align-middle mr-1">
-            done
-          </mat-icon>
-          <span class="vertical-align-middle">
-            Sell
-          </span>
-        </button>
+      <div class="col-md-12 py-2 px-3 row m-0">
+        <div class="col-md-6 p-1">
+          <button mat-raised-button color="primary" class="col-md-12 py-4" (click)="makeASale(1)">
+            <mat-icon class="vertical-align-middle mr-1">
+              done
+            </mat-icon>
+            <span class="vertical-align-middle">
+              Depart
+            </span>
+          </button>
+        </div>
+        <div class="col-md-6 p-1">
+          <button mat-raised-button color="primary" class="col-md-12 py-4" (click)="makeASale(0)">
+            <mat-icon class="vertical-align-middle mr-1">
+              done
+            </mat-icon>
+            <span class="vertical-align-middle">
+              Sell
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

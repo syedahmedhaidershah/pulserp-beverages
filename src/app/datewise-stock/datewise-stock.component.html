@@ -1,0 +1,40 @@
+<div class="col-md-12 px-1">
+  <mat-form-field class="col-md-12">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" (dateChange)="getDate($event)" autocomplete="off">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div class="col-md-12 justify-content-end d-flex">
+    <button *ngIf="showList.length === 0" mat-raised-button disabled>
+      <mat-icon class="vertical-align-middle mr-1">print</mat-icon>
+      <span class="vertical-align-middle">Print</span>
+    </button>
+    <button *ngIf="showList.length > 0" mat-raised-button color="accent" (click)="printSalesReport()">
+      <mat-icon class="vertical-align-middle mr-1">print</mat-icon>
+      <span class="vertical-align-middle">Print</span>
+    </button>
+  </div>
+  <div class="vertical-scroll p-1 h-24_5r">
+    <div *ngFor="let s of showList" class="col-md-12 p-1">
+      <div class="col-md-12 py-1 border rounded shadow">
+        <div class="col-md-12">
+          <b>{{s.name}}</b>
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-12 p-0">
+            Sold: <small>{{s.quantity}}</small>
+          </div>
+          <div class="col-md-12 p-0">
+            Purchased (Restock): <small>{{s.purchase}}</small>
+          </div>
+          <div class="col-md-12 p-0">
+            MT A/C Limit: <small>{{s.empty_account}}</small>
+          </div>
+          <div class="col-md-12 p-0">
+            MT (in-store): <small>{{s.empty_store}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

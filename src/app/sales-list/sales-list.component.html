@@ -1,0 +1,39 @@
+<div class="col-md-12 p-1 vertical-scroll" [style]="safeStyle">
+  <div *ngIf="salesList.length === 0" class="py-2">
+    No sales have been made as of yet
+  </div>
+  <div *ngIf="salesList.length !== 0 && schemesList.length === 0 && !schemesLoaded" class="col-md-12 py-1">
+    <small>Loading discounts</small>
+  </div>
+  <div *ngFor="let s of salesList" class="col-md-12 p-1 mx-0 mb-1 mt-0 hoverableItem cursor-pointer shadow card rounded"
+    #sale{{s.invoice_id}} (click)="payOut(s)">
+    <div class="row col-md-12 m-0">
+      <div class="col-md-6 p-0 font-weight-bold">
+        {{s.name}}
+      </div>
+      <div class="col-md-6 pr-1">
+        <div class="col-md-12 text-right small pr-0 font-weight-bold">
+          Total: {{s.total}}
+        </div>
+        <div class="col-md-12 text-right small pr-0 font-weight-bold">
+          Balance: {{s.balance}}
+        </div>
+        <div class="col-md-12 text-right small pr-0 font-weight-bold">
+          Paid: {{s.deposit}}
+        </div>
+      </div>
+      <div class="col-md-12 small pr-0 font-weight-bold">
+        <span *ngIf="getStatus(s) === 0" class="text-success">In-Progress</span>
+        <span *ngIf="getStatus(s) === 1" class="text-info">Completed</span>
+      </div>
+    </div>
+    <small class="d-block col-md-12 m-0">
+      {{Date(s.data[0].date_time)}}
+    </small>
+    <!-- <div class="col-md-12">
+      <mat-icon matRipple class="cursor-pointer" (click)="sendToPrinter(s)">
+        print
+      </mat-icon>
+    </div> -->
+  </div>
+</div>

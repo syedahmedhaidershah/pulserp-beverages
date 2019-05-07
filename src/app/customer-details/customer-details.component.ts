@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef, MatDialog } from '@angular/material';
 import { ItemsService } from '../items.service';
 import { SalesService } from '../sales.service';
 import { CustomersService } from '../customers.service';
 import { MessagesService } from '../messages.service';
+import { EditHDisComponent } from '../edit-hdis/edit-hdis.component';
 
 @Component({
   selector: 'app-customer-details',
@@ -11,6 +12,8 @@ import { MessagesService } from '../messages.service';
   styleUrls: ['./customer-details.component.css']
 })
 export class CustomerDetailsComponent implements OnInit {
+
+  hdiscountsList = [];
 
   balancepending = 0;
   remainingmt = 0;
@@ -28,7 +31,8 @@ export class CustomerDetailsComponent implements OnInit {
     private snackBar: MatSnackBar,
     private salesman: CustomersService,
     private ref: MatDialogRef<CustomerDetailsComponent>,
-    private messages: MessagesService
+    private messages: MessagesService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -38,8 +42,6 @@ export class CustomerDetailsComponent implements OnInit {
     Object.keys(this.data).forEach(k => {
       this.useData[k] = this.data[k];
     });
-    this.retreiveItems();
-    this.retreivePrev();
     // tslint:disable-next-line:no-string-literal
     this.details['customer_id'] = this.useData.customer_id;
     // tslint:disable-next-line:no-string-literal
@@ -54,6 +56,8 @@ export class CustomerDetailsComponent implements OnInit {
     delete this.useData.contact_no;
     this.keys = Object.keys(this.useData);
     this.values = Object.values(this.useData);
+    this.retreiveItems();
+    this.retreivePrev();
   }
 
   retreivePrev() {
@@ -118,4 +122,27 @@ export class CustomerDetailsComponent implements OnInit {
     });
   }
 
+  close() {
+    this.ref.close();
+  }
+
+  editHDis() {
+    const ref = this.dialog.open(EditHDisComponent, {
+      height: (window.innerHeight - 100).toString().concat('px'),
+      width: '60%',
+      panelClass: 'md-p-0',
+      data: {
+        items: this.itemsList,
+        data: this.useData,
+        details: this.details
+      },
+      disableClose: true
+    });
+
+    ref.afterClosed().subscribe(data => {
+      if (data === -200) {
+        this.ref.close();
+      }
+    });
+  }
 }

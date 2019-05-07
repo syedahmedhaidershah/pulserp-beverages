@@ -1,0 +1,28 @@
+<div class="col-md-12 p-0">
+  <mat-select #salesmanSelect placeholder="Select a salesman" class="border rounded py-2 px-4" (selectionChange)="retRec(salesmanSelect)">
+    <mat-option *ngFor="let c of customers" [value]="c.customer_id">{{c.name}}</mat-option>
+  </mat-select>
+  <div class="vertical-scroll p-1 h-24_5r">
+    <div *ngFor="let s of sales" class="col-md-12 p-2 mb-1 shadow border rounded">
+      <div>
+        MT Delivered:
+        <small>
+          {{s.mt}}
+        </small>
+      </div>
+      <div>
+        <div>
+          Paid: {{s.paid}}
+        </div>
+        <div>
+            Remaining Balance: {{s.balance}}
+        </div>
+      </div>
+      <div>
+        <small class="font-weight-bold">
+          {{s.id}}
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

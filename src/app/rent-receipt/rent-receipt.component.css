@@ -1,0 +1,8 @@
+.bottom-row {
+    bottom: 0px;
+}
+@media print {
+    #print-button-container {
+        display: none!important;
+    }
+}

@@ -1,3 +1,209 @@
-<p>
-  quick-sale-print works!
-</p>
+<div id="print-button-container" class="z-5 position-absolute r-1r">
+  <button mat-raised-button class="bg-success text-white mr-1" (click)="printWindow()">
+    <mat-icon class="mr-1">
+      done
+    </mat-icon>
+    <span>PRINT</span>
+  </button>
+  <button mat-raised-button class="bg-secondary text-white mr-1" (click)="cancel()">
+    <mat-icon class="mr-1">
+      clear
+    </mat-icon>
+    <span>Cancel</span>
+  </button>
+</div>
+<div class="col-md-12 print-container">
+  <h1 class="col-md-12 text-center">
+    Raheel Traders
+  </h1>
+  <div class="col-md-12 py-1">
+    <small>
+      <b>Date: </b> {{dateToday}}
+    </small>
+  </div>
+  <div class="col-md-12 py-1">
+    <small>
+      <b>Receipient: </b> {{receipient}}
+    </small>
+  </div>
+</div>
+<div class="col-md-12">
+  <table>
+    <tr>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center">QTY</th>
+      <th class="px-2 py-0 w-100p text-center">C.RATE</th>
+      <th class="px-2 py-0 w-100p text-center">C.SCHEME</th>
+      <th class="px-2 py-0 w-100p text-center">H.DISC</th>
+      <th class="px-2 py-0 w-100p text-center">NET</th>
+      <th class="px-2 py-0 w-100p text-center">T.DISC-</th>
+      <th class="px-2 py-0 w-100p text-center">T.BALANCE</th>
+    </tr>
+    <tr *ngFor="let i of data.data">
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">{{i.data.name}}</td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        <span *ngIf="i.onList > 0">
+          {{i.onList}}
+        </span>
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        <span>
+          {{i.data.selling}}
+        </span>
+      </td>
+      <!-- <td class="px-1 py-0 w-100p text-center font-weight-bold">
+      </td> -->
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        <span *ngIf="i.data.cscheme > 0" class="text-danger">
+          {{i.data.cscheme}}
+        </span>
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        <span *ngIf="getHDisc(i.data) > 0" class="text-danger">
+          {{getHDisc(i.data)}}
+        </span>
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        {{getNet(i)}}
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold text-danger">
+        {{getTDisc(i)}}
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        {{getTBalance(i)}}
+      </td>
+    </tr>
+    <tr>
+      <th class="px-2 py-0 w-100p text-center font-weight-bold">TOTAL</th>
+      <th class="px-2 py-0 w-100p text-center">{{getTotalOnList()}}</th>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center text-danger">{{getTotalDisOnList()}}</th>
+      <th class="px-2 py-0 w-100p text-center">{{data.bill}}</th>
+    </tr>
+    <tr>
+      <td class="font-weight-bold px-2 py-0 w-100p">TOTAL MT</td>
+      <td class="font-weight-bold px-2 py-0 w-100p">{{data.mt}}</td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-left-2 text-success" colspan="5">PREVIOUS BALANCE</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-right text-success">{{data.prev}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold px-2 py-0 w-100p text-success">RECEIVED MT+</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-success">{{data.mtr}}</td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-left-2 " colspan="5">TOTAL BALANCE</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-right">{{data.bill + data.prev}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold px-2 py-0 w-100p text-danger">CREDIT MT-</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-danger">{{data.mt - data.mtr}}</td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-left-2 text-success" colspan="5">RECEIVED CASH+</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-right">{{data.paid}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold px-2 py-0 w-100p border-0"></td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-0"></td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-left-2 text-danger" colspan="5">CREDIT BALANCE</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-right">{{data.bill + data.prev - data.paid}}</td>
+    </tr>
+  </table>
+</div>
+<br><br>
+<div class="col-md-12 only-print-view">
+  <table>
+    <tr>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center">QTY</th>
+      <th class="px-2 py-0 w-100p text-center">C.RATE</th>
+      <th class="px-2 py-0 w-100p text-center">C.SCHEME</th>
+      <th class="px-2 py-0 w-100p text-center">H.DISC</th>
+      <th class="px-2 py-0 w-100p text-center">NET</th>
+      <th class="px-2 py-0 w-100p text-center">T.DISC-</th>
+      <th class="px-2 py-0 w-100p text-center">T.BALANCE</th>
+    </tr>
+    <tr *ngFor="let i of data.data">
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">{{i.data.name}}</td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        <span *ngIf="i.onList > 0">
+          {{i.onList}}
+        </span>
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        <span>
+          {{i.data.selling}}
+        </span>
+      </td>
+      <!-- <td class="px-1 py-0 w-100p text-center font-weight-bold">
+      </td> -->
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        <span *ngIf="i.data.cscheme > 0" class="text-danger">
+          {{i.data.cscheme}}
+        </span>
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        <span *ngIf="getHDisc(i.data) > 0" class="text-danger">
+          {{getHDisc(i.data)}}
+        </span>
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        {{getNet(i)}}
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold text-danger">
+        {{getTDisc(i)}}
+      </td>
+      <td class="px-1 py-0 w-100p text-center font-weight-bold">
+        {{getTBalance(i)}}
+      </td>
+    </tr>
+    <tr>
+      <th class="px-2 py-0 w-100p text-center font-weight-bold">TOTAL</th>
+      <th class="px-2 py-0 w-100p text-center">{{getTotalOnList()}}</th>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center"></th>
+      <th class="px-2 py-0 w-100p text-center text-danger">{{getTotalDisOnList()}}</th>
+      <th class="px-2 py-0 w-100p text-center">{{data.bill}}</th>
+    </tr>
+    <tr>
+      <td class="font-weight-bold px-2 py-0 w-100p">TOTAL MT</td>
+      <td class="font-weight-bold px-2 py-0 w-100p">{{data.mt}}</td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-left-2 text-success" colspan="5">PREVIOUS BALANCE</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-right text-success">{{data.prev}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold px-2 py-0 w-100p text-success">RECEIVED MT+</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-success">{{data.mtr}}</td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-left-2 " colspan="5">TOTAL BALANCE</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-right">{{data.bill + data.prev}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold px-2 py-0 w-100p text-danger">CREDIT MT-</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-danger">{{data.mt - data.mtr}}</td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-left-2 text-success" colspan="5">RECEIVED CASH+</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-right">{{data.paid}}</td>
+    </tr>
+    <tr id="border-0" class="border-0">
+      <td class="font-weight-bold px-2 py-0 w-100p border-0"></td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-0"></td>
+      <td class="font-weight-bold px-2 py-0 w-100p border-left-2 text-danger" colspan="5">CREDIT BALANCE</td>
+      <td class="font-weight-bold px-2 py-0 w-100p text-right">{{data.bill + data.prev - data.paid}}</td>
+    </tr>
+  </table>
+</div>
+<br>
+<div class="col-md-12 only-print-view text-center position-absolute footer w-100 py-2">
+  <div>
+    Pulserp &copy; Copyrights 2019. Powered by Pulsate Technologies
+  </div>
+  <div>
+    website: www.pulsatechs.com
+  </div>
+  <div>
+    email: outreach@pulsatechs.com
+  </div>
+  <div>
+    tel: 03340279837, 03343254171, 03003573769
+  </div>
+</div>

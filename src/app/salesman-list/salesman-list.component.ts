@@ -44,7 +44,7 @@ export class SalesmanListComponent implements OnInit {
       height: (window.innerHeight - 50).toString().concat('px'),
       width: (window.innerWidth - 50).toString().concat('px'),
       data: forward,
-      maxWidth: '100%',
+      maxWidth: '100vw',
       panelClass: 'md-p-0'
     });
   }

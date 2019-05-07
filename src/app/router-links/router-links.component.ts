@@ -12,6 +12,7 @@ export class RouterLinksComponent implements OnInit {
   routerLinks = [
     { label: 'Home', link: 'home' },
     { label: 'Salesmen', link: 'salesmen' },
+    { label: 'Accounts', link: 'accounts' },
     { label: 'Reports', link: 'reporting' }
   ];
 

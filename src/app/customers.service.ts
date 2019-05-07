@@ -22,4 +22,12 @@ export class CustomersService {
   clearAllBalance(data) {
     return this.http.post<Def>('/customers/autodeposit', data);
   }
+
+  updateHDis(data) {
+    return this.http.post<Def>('/customers/update/hdis', data);
+  }
+
+  dateWise(data) {
+    return this.http.post<Def>('/customers/datewise', data);
+  }
 }

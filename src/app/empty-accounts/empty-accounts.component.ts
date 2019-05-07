@@ -56,7 +56,10 @@ export class EmptyAccountsComponent implements OnInit {
     const dialogRef2 = this.matDialog.open(InterruptPromptComponent, {
       height: 'auto',
       width: '400px',
-      data: (ce.quantity - ce.returned)
+      data: {
+        message: 'MT Quantity to Clear',
+        value: (ce.quantity - ce.returned)
+      }
     });
 
     dialogRef2.afterClosed().subscribe(value => {

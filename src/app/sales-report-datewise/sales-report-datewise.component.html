@@ -1,0 +1,71 @@
+<div id="print-button-container" class="z-5 position-absolute r-1r">
+  <button mat-raised-button class="bg-success text-white mr-1" (click)="printWindow()">
+    <mat-icon class="mr-1">
+      done
+    </mat-icon>
+    <span>PRINT</span>
+  </button>
+  <button mat-raised-button class="bg-secondary text-white mr-1" (click)="cancel()">
+    <mat-icon class="mr-1">
+      clear
+    </mat-icon>
+    <span>Cancel</span>
+  </button>
+</div>
+<mat-toolbar class="bg-white">
+  <mat-toolbar-row>
+    <div class="col-md-12">
+      <h1 class="col-md-12 text-center m-0">
+        Raheel Traders
+      </h1>
+      <h6 class="col-md-12 text-center fs-0-8r">
+        Sales Report
+      </h6>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="col-md-12 py-1 text-right container">
+  <small>
+    <b>Date: </b> {{dateToday}}
+  </small>
+</div>
+<div class="col-md-12">
+  <table class="col-md-12">
+    <tr>
+      <th class="px-2 py-0 w-100p text-center">Customer</th>
+      <th class="px-2 py-0 w-100p text-center">Items on List</th>
+      <th class="px-2 py-0 w-100p text-center">Deposit</th>
+      <th class="px-2 py-0 w-100p text-center">Balance</th>
+      <th class="px-2 py-0 w-100p text-center">Date/Time</th>
+    </tr>
+    <tr *ngFor="let s of data">
+      <td class="px-2 py-0 w-100p text-center">{{s.cName}}</td>
+      <td class="px-2 py-0 w-100p text-center">
+        <ul>
+          <li *ngFor="let i of s.data">
+            <span><b>{{i.name}}</b> ({{i.quantity}})</span>
+            <mat-divider></mat-divider>
+          </li>
+        </ul>
+      </td>
+      <td class="px-2 py-0 w-100p text-center">{{s.deposit}}</td>
+      <td class="px-2 py-0 w-100p text-center">{{s.balance}}</td>
+      <td class="px-2 py-0 w-100p text-center">{{getLocalDT(s.date_time)}}</td>
+    </tr>
+  </table>
+</div>
+<br>
+<div class="col-md-12 only-print-view text-center position-absolute footer w-100 py-2">
+  <div>
+    Pulserp &copy; Copyrights 2019. Powered by Pulsate Technologies
+  </div>
+  <div>
+    website: www.pulsatechs.com
+  </div>
+  <div>
+    email: outreach@pulsatechs.com
+  </div>
+  <div>
+    tel: 03340279837, 03343254171, 03003573769
+  </div>
+</div>

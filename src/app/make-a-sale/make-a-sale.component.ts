@@ -178,6 +178,10 @@ export class MakeASaleComponent implements OnInit, AfterViewInit {
       this.snackBar.open('Please select a salesman/Customer', 'close');
       return false;
     }
+    if (item.quantity === 0) {
+      this.snackBar.open('Please restock '.concat(item.name).concat(' to continue'), 'close');
+      return false;
+    }
     const check = this.cartList.filter(c => {
       if (c.data.item_id === item.item_id) {
         return c;
@@ -206,9 +210,11 @@ export class MakeASaleComponent implements OnInit, AfterViewInit {
           return i;
         });
         this.productsTotal += (
-          item.selling * data -
-          this.selectedSalesman['h'.concat(item.item_id.toString())] -
-          item.cscheme
+          data * (
+            item.selling -
+            this.selectedSalesman['h'.concat(item.item_id.toString())] -
+            item.cscheme
+          )
         );
         this.totalBill = this.productsTotal + this.previousBalance;
         // tslint:disable-next-line:no-string-literal
@@ -251,9 +257,11 @@ export class MakeASaleComponent implements OnInit, AfterViewInit {
         return i;
       } else {
         this.productsTotal -= (
-          i.data.selling * i.onList -
-          this.selectedSalesman['h'.concat(item.data.item_id.toString())] -
-          i.data.cscheme
+          i.onList * (
+            i.data.selling -
+            this.selectedSalesman['h'.concat(item.data.item_id.toString())] -
+            i.data.cscheme
+          )
         );
         this.totalBill = this.productsTotal + this.previousBalance;
         // tslint:disable-next-line:no-string-literal
@@ -268,7 +276,7 @@ export class MakeASaleComponent implements OnInit, AfterViewInit {
     });
   }
 
-  makeASale() {
+  makeASale(depart) {
     const useArr = [];
     this.itemsList.forEach(i => {
       useArr.push({
@@ -327,7 +335,15 @@ export class MakeASaleComponent implements OnInit, AfterViewInit {
     };
 
     this.sales.makeASale(forward).subscribe(res => {
-      this.snackBar.open(res.message, 'close');
+      if (!(res.error)) {
+        if (depart === 1) {
+          this.snackBar.open('Your load has been departed.', 'close');
+        } else {
+          this.snackBar.open(res.message, 'close');
+        }
+      } else {
+        this.snackBar.open(res.message, 'close');
+      }
 
       this.messages.changeMessage('inventory');
 
@@ -337,13 +353,15 @@ export class MakeASaleComponent implements OnInit, AfterViewInit {
       this.cartList = [];
       this.extraDetailsForm.reset();
 
-      const ref = this.dialog.open(QuickSalePrintComponent, {
-        height: (window.innerHeight - 10).toString().concat('px'),
-        width: (window.innerWidth - 10).toString().concat('px'),
-        panelClass: 'md-p-0',
-        data: forward
-      });
+      if (depart === 0) {
+        const ref = this.dialog.open(QuickSalePrintComponent, {
+          height: (window.innerHeight).toString().concat('px'),
+          width: (window.innerWidth).toString().concat('px'),
+          maxWidth: (window.innerWidth).toString().concat('px'),
+          panelClass: 'md-p-0',
+          data: forward
+        });
+      }
     });
-
   }
 }

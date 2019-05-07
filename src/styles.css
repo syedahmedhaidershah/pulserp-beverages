@@ -2,13 +2,12 @@
     src: url('./assets/fonts/proximaNovaLight.ttf');
     font-family: proximaNova;
 }
-
 .font-proxima-nova {
     font-family: proximaNova!important;
 }
 
-*, h1, h2, h3, h4, h5, input, button{
-    font-family: proximaNova;
+h1, h2, h3, h4, h5, input, button{
+    font-family: proximaNova!important;
 }
 *, *:active, *:focus{
     -webkit-touch-callout: none!important;
@@ -94,4 +93,33 @@ div.active {
 }
 .bg-transp-blue {
     background-color: rgba(8,48,70,0.85)
+}
+.light-divider {
+    border-top-color: rgba(255,255,255,0.24)!important;
+}
+.z-5 {
+    z-index: 5!important;
+}
+.border-left-2 {
+    border-left-width: 2px!important;
+}
+@media screen {
+    .only-print-view {
+        display: none!important;   
+    }
+}
+@media print {
+    .only-print-view {
+        display: auto!important;   
+    }
+}
+.footer {
+    bottom: 0px;
+    right: 0px;
+}
+.vertical-align-top {
+    vertical-align: top!important;
+}
+.fs-0-8r {
+    font-size: 0.8rem!important;
 }

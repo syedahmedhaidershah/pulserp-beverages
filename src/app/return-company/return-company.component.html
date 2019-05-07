@@ -1,0 +1,37 @@
+<div class="p-1 align-self-stretch row m-0 inv-section" (addInvItemEvent)="retreiveInvItems()">
+  <div *ngIf="inventoryStats.length === 0" class="text-white p-2">
+    Your inventory is currently empty
+  </div>
+  <div *ngFor="let i of inventoryStats" class="col-md-12 text-white align-self-stretch px-1 p-2 text-white cursor-pointer react-on-hover react-white inv-item mb-1 border-bottom-dark">
+    <div class="col-md-12 p-2">
+      <div class="col-md-12 m-0 p-0">
+        <mat-icon class="ml-2 mr-3 vertical-align-middle">
+          all_inbox
+        </mat-icon>
+        <span class="vertical-align-middle">
+          {{capitalizeOnGaps(i.name)}}
+        </span>
+        <span class="vertical-align-middle float-right">
+          <small class="fs-1_25">
+            {{i.quantity}}
+          </small>
+        </span>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="py-1 px-3">
+        <small>
+          <div *ngIf="i.empty >= 0">
+            Store MT: {{i.empty_account}}
+          </div>
+        </small>
+      </div>
+      <div class="col-md-12 d-flex justify-content-end">
+        <button #item{{i.item_id}}Re mat-mini-fab class="bg-success text-white ml-2" (click)="reStock(i.item_id)">
+          <mat-icon>
+            publish
+          </mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

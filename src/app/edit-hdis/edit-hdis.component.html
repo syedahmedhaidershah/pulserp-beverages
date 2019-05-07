@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" class="position-relative">
+  <span>
+    Set Default H.Discounts
+  </span>
+  <button mat-mini-fab color="accent" class="float-right position-absolute r-1r" (click)="cancel()">
+    <mat-icon>
+      clear
+    </mat-icon>
+  </button>
+</mat-toolbar>
+<div class="col-md-12 py-2">
+  <form class="vertical-scroll p-2">
+    <div *ngFor="let d of data.items" class="col-md-2 p-1 d-inline-block">
+      <div class="col-md-12 border rounded shadow">
+        <mat-form-field class="col-md-12">
+          <label>
+            {{d.name}}
+          </label>
+          <input matInput id="item{{d.item_id}}" placeholder="" type="number" min=0 [value]="data.data['h'.concat(d.item_id.toString())]" autocomplete="off" />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-md-12 py-2">
+  <button mat-raised-button class="d-block mx-auto mt-1 col-md-3 py-2" color="accent" (click)="save()">
+    <mat-icon class="mr-1 vertical-align-middle">
+      done
+    </mat-icon>
+    <span class="vertical-align-middle">
+      Save
+    </span>
+  </button>
+  <button mat-raised-button class="d-block mx-auto mt-1 col-md-3 py-2" color="primary" [disabled]="!loaded" (click)="cancel()">
+    <mat-icon class="mr-1 vertical-align-middle">
+      clear
+    </mat-icon>
+    <span class="vertical-align-middle">
+      Cancel
+    </span>
+  </button>
+</div>

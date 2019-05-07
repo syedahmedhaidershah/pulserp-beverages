@@ -1,0 +1,98 @@
+<mat-toolbar class="bg-white col-md-12">
+  <mat-toolbar-row>
+    <span>Departure Details</span>
+    <div class="float-right col-md-3 text-success position-absolute r-1r">
+      <div class="col-md-12 text-right">
+        <span *ngIf="status === false" class="col-md-12">
+          In-Progress
+        </span>
+        <span *ngIf="status === true" class="vertical-align-middle text-info">
+          Completed
+        </span>
+      </div>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <div class="col-md-2 mt-1 px-5 position-absolute float-right r-1r justify-content-end vertical-align-top">
+      <div class="col-md-12">
+        <button *ngIf="status === false" mat-raised-button (click)="completeSale()" class="bg-success text-white col-md-12 text-center">
+          <mat-icon class="vertical-align-middle mr-1">
+            done
+          </mat-icon>
+          <span class="vertical-align-middle">
+            Complete
+          </span>
+        </button>
+      </div>
+      <div class="col-md-12 mt-1">
+        <button mat-raised-button (click)="printSale()" class="bg-secondary text-white col-md-12 text-center">
+          <mat-icon class="vertical-align-middle mr-1">
+            print
+          </mat-icon>
+          <span class="vertical-align-middle">
+            Print
+          </span>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="col-md-12 py-2">
+  <div class="col-md-12 py-1">
+    <span>
+      Mr. {{sale.name}}
+    </span>
+  </div>
+  <div class="col-md-12 py-2 row m-0">
+    <div class="col-md-2 text-right text-danger">
+      Balance: <span>
+        <span *ngIf="pendingBalance === 0">0</span>
+        <span *ngIf="pendingBalance > 0" class="font-weight-bold">{{pendingBalance}}</span>
+      </span>
+    </div>
+    <div *ngIf="pendingBalance > 0" class="col-md-4">
+      <button mat-raised-button (click)="depositAmount()" class="text-white text-center px-0 bg-success col-md-2">
+        Clear
+      </button>
+      <button mat-raised-button (click)="clearBalance()" class="text-white text-center px-0 bg-info col-md-2 ml-1">
+        Clear All
+      </button>
+    </div>
+  </div>
+  <div class="col-md-12 container py-2 vertical-scroll">
+    <div *ngFor="let s of sale.data" class="col-md-12 p-1">
+      <div class="col-md-12 px-1 py-4 mb-1 rounded border shadow">
+        <div class="col-md-12 row m-0">
+          <div class="col-md-2 font-weight-bold">
+            {{s.name}}
+          </div>
+          <div class="col-md-2 text-center">
+            Quantity: X {{s.quantity}}
+          </div>
+          <div class="col-md-2 text-center">
+            Remaining MT: {{s.quantity - s.returned}}
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-3 float-right">
+              <div *ngIf="s.quantity > s.returned && s.quantity > 0" class="p-0 col-md-12 py-2 text-center">
+                Receive:
+              </div>
+              <div class="p-0 col-md-12">
+                <button *ngIf="s.quantity > s.returned && s.quantity > 0" mat-raised-button class="col-md-12 bg-danger text-white float-right mb-1"
+                  (click)="returnCrates(s)">
+                  Returned
+                </button>
+              </div>
+              <div class="p-0 col-md-12">
+                <button *ngIf="s.returned < s.quantity" mat-raised-button class="col-md-12 bg-info text-white float-right"
+                  (click)="returnMT(s)">
+                  MT
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

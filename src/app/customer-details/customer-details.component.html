@@ -1,5 +1,8 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="position-relative">
   <span>Customer Details</span>
+  <button mat-mini-fab class="float-right position-absolute r-1r" (click)="close()">
+    <mat-icon>clear</mat-icon>
+  </button>
 </mat-toolbar>
 <div class="col-md-12 row m-0 py-2">
   <div class="col-md-3">
@@ -35,6 +38,18 @@
         </span>
       </div>
     </div>
+    <div class="col-md-12 bg-dark text-white px-2 row m-0 py-1">
+      <div class="col-md-10 py-1">
+        <span class="vertical-align-middle">
+          H.Discounts
+        </span>
+      </div>
+      <div class="col-md-2 py-1 justify-content-end">
+        <button mat-mini-fab class="bg-white text-dark" (click)="editHDis()">
+          <mat-icon class="mat-18">edit</mat-icon>
+        </button>
+      </div>
+    </div>
     <div class="col-md-12 p-0 row m-0">
       <div class="col-md-6 py-1 pr-0 pl-1 text-center">
         <div class="col-md-12 border p-1 font-weight-bold" *ngFor="let k of keys">
@@ -42,7 +57,7 @@
         </div>
       </div>
       <div class="col-md-6 py-1 pl-0 pr-1 text-center">
-        <div class="col-md-12 border p-1" *ngFor="let v of values">
+        <div class="col-md-12 border p-1 row m-0 text-center" *ngFor="let v of values">
           {{v}}
         </div>
       </div>
@@ -63,7 +78,7 @@
             </div>
             <div *ngIf="balancepending > 0" class="col-md-12 py-2">
               <button mat-raised-button class="col-md-6 text-white bg-secondary" (click)="returnBalance()">
-                Return
+                Receive
               </button>
             </div>
           </div>

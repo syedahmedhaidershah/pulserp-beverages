@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span>Return MT (to Company)</span>
+</mat-toolbar>
+<form [formGroup]="retFrom" class="col-md-8 d-block mx-auto py-5">
+  <mat-form-field class="col-md-12">
+    <mat-select #itemSelect placeholder="Select a product" (selectionChange)="selectItem(itemSelect)" [value]="data">
+      <mat-option *ngFor="let i of itemsList" [value]="i.item_id">{{i.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="selectedItem !== null" class="col-md-12">
+    <input matInput placeholder="Enter an Amount to return" type="number" min=0 [max]="selectedItem.empty_store" formControlName="amount" autocomplete="off" autofocus />
+  </mat-form-field>
+  <div *ngIf="selectedItem !== null && retFrom.controls.amount.value !== '0' && retFrom.controls.amount.value !== 0 && retFrom.controls.amount.value !== '' && retFrom.controls.amount.value !== undefined && retFrom.controls.amount.value !== null" class="col-md-12 mt-2 d-flex justify-content-center">
+    <button mat-raised-button class="bg-success text-white col-md-6" (click)="returnToCompany()">
+      <mat-icon class="vertical-align-middle mr-1">publish</mat-icon>
+      <span class="vertical-align-middle">Return</span>
+    </button>
+  </div>
+</form>

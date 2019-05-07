@@ -1,0 +1,78 @@
+<div class="col-md-12 container py-2 row m-0">
+    <div class="col-md-5">
+        <mat-grid-list cols="2" rowHeight="1:1">
+            <mat-grid-tile matRipple class="mb-1 bg-success">
+                <div class="col-md-12 text-center text-white">
+                    <div class="display-2">
+                        {{mtCount}}
+                    </div>
+                    <h3 class="col-md-12 m-0">
+                        MT Count
+                    </h3>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile matRipple class="mb-1 bg-info">
+                <div class="col-md-12 text-center text-white">
+                    <div class="display-4">
+                        {{cashInStore}}
+                    </div>
+                    <h3 class="col-md-12 m-0">
+                        Store Capital
+                    </h3>
+                    <div class="col-md-12 mt-5">
+                        <div class="col-md-12 py-1 d-flex justify-content-center">
+                            <button mat-raised-button class="font-weight-bold shadow bg-dark text-white col-md-8 px-3" (click)="transferToBank()">
+                                Transfer to Bank
+                            </button>
+                        </div>
+                        <div class="col-md-12 py-1 d-flex justify-content-center">
+                            <button mat-raised-button class="font-weight-bold shadow bg-white text-dark col-md-8 px-3">
+                                Deposit
+                            </button>
+                        </div>
+                        <div class="col-md-12 py-1 d-flex justify-content-center">
+                            <button mat-raised-button class="font-weight-bold shadow bg-white text-dark col-md-8 px-3">
+                                Withdraw
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile matRipple class="mb-1 bg-dark">
+                <div class="col-md-12 text-center text-white">
+                    <div class="display-4">
+                        {{cashInBank}}
+                    </div>
+                    <h3 class="col-md-12 m-0">
+                        Bank Capital
+                    </h3>
+                    <div class="col-md-12 mt-5">
+                        <div class="col-md-12 py-1 d-flex justify-content-center">
+                            <button mat-raised-button class="font-weight-bold shadow bg-warning text-dark col-md-8 px-3" (click)="transferToStore()">
+                                Transfer to Store
+                            </button>
+                        </div>
+                        <div class="col-md-12 py-1 d-flex justify-content-center">
+                            <button mat-raised-button class="font-weight-bold shadow bg-white text-dark col-md-8 px-3">
+                                Deposit
+                            </button>
+                        </div>
+                        <div class="col-md-12 py-1 d-flex justify-content-center">
+                            <button mat-raised-button class="font-weight-bold shadow bg-white text-dark col-md-8 px-3">
+                                Withdraw
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div class="col-md-3 p-0">
+        <mat-toolbar>
+            <span>Return MT (to Company)</span>
+        </mat-toolbar>
+        <div class="col-md-12 p-1 bg-transp-blue h-40r vertical-scroll">
+            <app-return-company></app-return-company>
+        </div>
+    </div>
+</div>

@@ -30,4 +30,36 @@ export class SalesService {
   clearEmpty(data) {
     return this.http.post<Def>('/clear/record', data);
   }
+
+  returnCrate(data) {
+    return this.http.post<Def>('/sale/return', data);
+  }
+
+  autoDepositOnSale(data) {
+    return this.http.post<Def>('/sale/autodeposit', data);
+  }
+
+  depositOnSale(data) {
+    return this.http.post<Def>('/sale/deposit', data);
+  }
+
+  completeSale(data) {
+    return this.http.post<Def>('/sale/complete', data);
+  }
+
+  rentOut(data) {
+    return this.http.post<Def>('/rent/out', data);
+  }
+
+  getAllSalesDetails() {
+    return this.http.post<Def>('/sales/details', {});
+  }
+
+  getDepartureDetails(data) {
+    return this.http.post<Def>('/sales/departures', data);
+  }
+  
+  getByDate(data) {
+    return this.http.post<Def>('/sales/getbydate', data);
+  }
 }

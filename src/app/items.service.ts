@@ -15,6 +15,10 @@ export class ItemsService {
     return this.http.post<Def>('/items/getall', {});
   }
 
+  get getAllRentalItems() {
+    return this.http.post<Def>('/get/inventory/items/rental', {});
+  }
+
   getItem(data) {
     return this.http.post<Def>('/items/getitem', data);
   }
@@ -22,4 +26,13 @@ export class ItemsService {
   restockItem(data) {
     return this.http.post<Def>('/items/restock', data);
   }
+
+  getStockByDate(data) {
+    return this.http.post<Def>('/items/stockbydate', data);
+  }
+
+  returnToCompany(data) {
+    return this.http.post<Def>('/company/returnmt', data);
+  }
+
 }

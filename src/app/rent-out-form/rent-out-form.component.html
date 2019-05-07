@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <span class="text-uppercase">rent out</span>
+</mat-toolbar>
+<form [formGroup]="rentOutForm" class="col-md-12 py-2">
+  <div class="row col-md-12 m-0 p-0">
+    <mat-form-field class="col-md-6 px-1">
+      <mat-label>Select an Item</mat-label>
+      <mat-select #itemSelect (selectionChange)='saveItem(itemSelect)'>
+        <mat-option *ngFor="let r of invItems" [value]='r.item_id'>
+          {{r.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-md-6 px-1">
+      <input id="rentItemQuantity" matInput placeholder="Select a Quantity" type="number" min=0 formControlName="quantity" />
+    </mat-form-field>
+  </div>
+  <div class="row col-md-12 m-0 p-0 ">
+    <mat-form-field class="col-md-6 px-1">
+      <input matInput #paid placeholder="Paid Upfront" type="number" min=0 formControlName="paid" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="col-md-6 px-1">
+      <mat-label>Select a Customer</mat-label>
+      <mat-select #customerSelect (selectionChange)='saveCustomer(customerSelect)'>
+        <mat-option *ngFor="let c of customers" [value]='c.customer_id'>
+          {{c.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row col-md-12 m-0 p-0 ">
+    <mat-form-field class="col-md-6 px-1">
+      <input matInput #contact placeholder="Contact No (Optional)" type="number" min=0 formControlName="contact"
+        autocomplete="off" />
+    </mat-form-field>
+  </div>
+  <div class="row col-md-12 m-0 p-0 text-center">
+    Rent/Day: PKR {{rentPerDay}}
+  </div>
+  <div class="col-md-12 p-2">
+    <button mat-raised-button color="accent" class="d-block mx-auto" [disabled]="!sellButtonState" (click)="rentOut()">
+      <mat-icon class="vertical-align-middle mr-1">done</mat-icon>
+      <span class="vertical-align-middle">Rent Out</span>
+    </button>
+  </div>
+</form>
